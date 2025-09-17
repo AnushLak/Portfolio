@@ -730,9 +730,10 @@ main {
 
 .clients-list {
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  gap: 80px;
+  list-style: none;
   margin: 0 -15px;
   padding: 25px;
   padding-bottom: 25px;
@@ -749,7 +750,8 @@ main {
 }
 
 .clients-item img {
-  width: 100%;
+  height: 80px;
+  width: 160px;
   filter: grayscale(1);
   transition: var(--transition-1);
 }
@@ -939,7 +941,10 @@ main {
   margin-bottom: 10px;
 }
 
-.project-item { display: none; }
+.project-item { display: none;
+  height: auto;
+  width: auto;
+ }
 
 .project-item.active {
   display: block;
@@ -955,8 +960,8 @@ main {
 
 .project-img {
   position: relative;
-  width: 100%;
-  height: 200px;
+  width: auto;
+  height: auto;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 15px;
@@ -978,7 +983,7 @@ main {
 
 .project-item-icon-box {
   --scale: 0.8;
-
+  pointer-events: none;
   background: var(--jet);
   color: var(--orange-yellow-crayola);
   position: absolute;

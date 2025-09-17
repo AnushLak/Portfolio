@@ -1,6 +1,8 @@
 'use strict';
 
-
+document.querySelectorAll('figure.project-img video').forEach(v=>{
+  v.addEventListener('click', e => e.stopPropagation());
+});
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }

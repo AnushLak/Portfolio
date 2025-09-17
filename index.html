@@ -48,7 +48,11 @@
         <div class="info-content">
           <h1 class="name" title="Anush Lakshman Sivaraman">Anush Lakshman <br/> Sivaraman</h1>
 
-          <p class="title">Robotics & AI Enthusiast</p>
+          <p class="title">Robotics</p>
+          <p class="title">Computer Vision</p>
+          <p class="title">Aritifical Intelligence</p>
+          <p class="title">Machine Learning</p>
+          <p class="title">Digital Twin</p>
         </div>
 
         <button class="info_more-btn" data-sidebar-btn>
@@ -127,11 +131,11 @@
 
         <ul class="social-list">
 
-          <li class="social-item">
-            <a href="#" class="social-link">
+          <!-- <li class="social-item">
+            <a href="https://www.facebook.com/share/17D6mPgSEL/" class="social-link">
               <ion-icon name="logo-facebook"></ion-icon>
             </a>
-          </li>
+          </li> -->
 
           <li class="social-item">
             <a href="https://www.linkedin.com/in/anush-lakshman-sivaraman/" class="social-link">
@@ -145,7 +149,7 @@
             </a>
           </li>
 
-          <li class="social-item"></li>
+          <li class="social-item">
             <a href="https://github.com/AnushLak" class="social-link">
               <ion-icon name="logo-github"></ion-icon>
             </a>
@@ -251,15 +255,14 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-design.svg
-                " alt="design icon" width="40">
+                <img src="./assets/images/robotics.png" alt="design icon" width="100">
               </div>
 
               <div class="service-content-box">
                 <h4 class="h4 service-item-title">Robotics</h4>
 
                 <p class="service-item-text">
-                  Autonomous Systems
+                  I love teaching robots to roll, lift and climb
                 </p>
               </div>
 
@@ -268,7 +271,7 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-dev.svg" alt="Web development icon" width="40">
+                <img src="./assets/images/com_vision.png" alt="Web development icon" width="100">
               </div>
 
               <div class="service-content-box">
@@ -284,11 +287,11 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-app.svg" alt="mobile app icon" width="40">
+                <img src="./assets/images/digitaltwin.png" alt="mobile app icon" width="100">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">AI/ML</h4>
+                <h4 class="h4 service-item-title">Digital Twin</h4>
 
                 <p class="service-item-text">
                   Artificially making machines learn to do things like humans so that humans can focus
@@ -301,19 +304,17 @@
             <li class="service-item">
 
               <div class="service-icon-box">
-                <img src="./assets/images/icon-photo.svg" alt="camera icon" width="40">
+                <img src="./assets/images/aiml.png" alt="camera icon" width="100">
               </div>
 
               <div class="service-content-box">
-                <h4 class="h4 service-item-title">Algorithm Development</h4>
+                <h4 class="h4 service-item-title">AI/ML Algorithm Development</h4>
 
                 <p class="service-item-text">
-                  I make optimized algorithms for specifically suited for real-world deployment.
+                  I make quantized AI/ML algorithms for specifically suited for real-world deployment.
                 </p>
               </div>
-
             </li>
-
           </ul>
 
         </section>
@@ -482,39 +483,37 @@
 
             <li class="clients-item">
               <a href="https://www.cnde.in">
-                <img src="./assets/images/cnde.jpeg" alt="client logo">
-              </a>
-            </li>
-
-            <li class="clients-item">
-              <a href="https://www.vrac.iastate.edu">
-                <img src="./assets/images/vrac.png" alt="client logo">
+                <img src="./assets/images/cnde.jpeg" alt="client logo" style= "height:160px">
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://ctre.iastate.edu/reactor-lab/">
-                <img src="./assets/images/reactor.png" alt="client logo">
+                <img src="./assets/images/reactor.png" alt="client logo" >
               </a>
             </li>
 
             <li class="clients-item">
+              <a href="https://www.vrac.iastate.edu">
+                <img src="./assets/images/vrac.png" alt="client logo"  style= "height:150px">
+              </a>
+            </li>
+
+   
+
+            <li class="clients-item">
               <a href="https://www.cmialab.com">
-                <img src="./assets/images/cmia.png" alt="client logo">
+                <img src="./assets/images/cmia.png" alt="client logo" >
               </a>
             </li>
 
             <li class="clients-item">
               <a href="https://www.arigs.com">
-                <img src="./assets/images/ari.jpeg" alt="client logo">
+                <img src="./assets/images/ari.jpeg" alt="client logo" style= "height:160px">
               </a>
             </li>
 
-            <li class="clients-item">
-              <a href="#">
-                <img src="./assets/images/logo-6-color.png" alt="client logo">
-              </a>
-            </li>
+
 
           </ul>
 
@@ -995,6 +994,10 @@
             </li>
 
             <li class="filter-item">
+              <button data-filter-btn>Digital Twin</button>
+            </li>
+
+            <li class="filter-item">
               <button data-filter-btn>AI/ML</button>
             </li>
 
@@ -1027,7 +1030,11 @@
               </li>
 
               <li class="select-item">
-                <button data-select-item>AI/ML</button>
+                <button data-select-item>Digital Twin</button>
+              </li>
+              
+              <li class="select-item"></li>
+                <button data-filter-btn>AI/ML</button>
               </li>
 
             </ul>
@@ -1036,25 +1043,106 @@
 
           <ul class="project-list">
 
+            <!-- INTERNAL WALL FINISHING ROBOT -->
             <li class="project-item  active" data-filter-item data-category="robotics">
-              <a href="#">
+                  <!-- <img src="./assets/images/ifr.png" alt="finance" loading="lazy"> -->
+                  <video width="200" height="200" controls poster="./assets/images/ifr.png">
+                    <source src="./assets/videos/IFR Demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+               
 
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
+                <h3 class="project-title">Autonomous Internal Wall Finishing Robot for Block Masonry</h3>
 
-                  <img src="./assets/images/ifr.png" alt="finance" loading="lazy">
-                </figure>
+                <p class="project-category">Robotics</p>
 
-                <h3 class="project-title">Finance</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
+     
             </li>
-
+                        
+            <!-- REFORMER TUBE CRAWLER -->
             <li class="project-item  active" data-filter-item data-category="robotics">
+              <video width="200" height="200" controls poster="./assets/images/rtcrawler.png">
+                <source src="./assets/videos/indroprit.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+
+                <h3 class="project-title">InD-RoPRIT for Structural Health Monitoring of Reformer Tubes using Multi-Modal data</h3>
+
+                <p class="project-category">Robotics</p>
+            </li>
+            
+            <!-- EKF SLAM -->
+            <li class="project-item  active" data-filter-item data-category="robotics">
+                  <!-- <img src="./assets/images/ekf_slam.jpg" alt="fundo" loading="lazy"> -->
+                  <video width="320" height="200" controls poster="./assets/images/ekf_slam.jpg">
+                    <source src="./assets/videos/simulation_h.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                <h3 class="project-title">Extended Kalman Filter SLAM for path planning algorithm development</h3>
+
+                <p class="project-category">Robotics</p>
+
+            </li>
+
+            <!-- CORROSION INSPECTION -->
+            <li class="project-item  active" data-filter-item data-category="computer vision">
+              <a href="https://iopscience.iop.org/article/10.1088/1361-6501/ad4dd1/meta">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/corrosion.png" alt="brawlhalla" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Corrosion characterization of Engine Connecting Rods using Unsupervised Machine Learning</h3>
+
+                <p class="project-category">Computer Vision, AI/ML</p>
+
+              </a>
+            </li>
+
+            <!-- 3D PRINTING OPTIMIZATION -->
+            <li class="project-item  active" data-filter-item data-category="computer vision">
+              <a href="https://spj.science.org/doi/epdf/10.34133/adi.0116">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/hydrogel_cover.png" alt="dsm." loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Characterizing the 3D Printability of Alginate–Gelatin and Nanocellulose Gels via Fringe Projection</h3>
+
+                <p class="project-category">Computer Vision, AI/ML</p>
+
+              </a>
+            </li>
+            
+            <!-- WEATHER PREDICTION -->
+            <li class="project-item  active" data-filter-item data-category="ai/ml" >
+              <a href="https://arxiv.org/pdf/2504.19684">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/clearvision.png" alt="metaspark" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">ClearVision: ClearVision: All-Weather AI-enabled analysis of Traffic Camera Imagery</h3>
+
+                <p class="project-category">AI/ML, Computer Vision</p>
+
+              </a>
+            </li>
+
+            <!-- ROBOTIC 3D SCANNING -->
+            <li class="project-item  active" data-filter-item data-category="digital twin">
               <a href="#">
 
                 <figure class="project-img">
@@ -1062,17 +1150,18 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-2.png" alt="orizon" loading="lazy">
+                  <img src="./assets/images/robodt.png" alt="summary" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Orizon</h3>
+                <h3 class="project-title">A digital twin for path planning development for robotic 3D scanning</h3>
 
-                <p class="project-category">Web development</p>
+                <p class="project-category">Robotics, Digital Twin</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="web design">
+            <!-- VIRTUS FPP -->
+            <li class="project-item  active" data-filter-item data-category="digital twin">
               <a href="#">
 
                 <figure class="project-img">
@@ -1080,17 +1169,18 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                  <img src="./assets/images/virtuscover.png" alt="task manager" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Fundo</h3>
+                <h3 class="project-title">VIRTUS-FPP: Virtual Sensor Modeling for Fringe Projection Profilometry in NVIDIA Isaac Sim</h3>
 
-                <p class="project-category">Web design</p>
+                <p class="project-category">Digital Twin, Computer Vision</p>
 
               </a>
             </li>
 
-            <li class="project-item  active" data-filter-item data-category="applications">
+            <!-- AUTONOMOUS ROBOTIC 3D SCANNING -->
+            <!-- <li class="project-item  active" data-filter-item data-category="robotics, digital twin">
               <a href="#">
 
                 <figure class="project-img">
@@ -1098,105 +1188,16 @@
                     <ion-icon name="eye-outline"></ion-icon>
                   </div>
 
-                  <img src="./assets/images/project-4.png" alt="brawlhalla" loading="lazy">
+                  <img src="./assets/images/robodt.png" alt="arrival" loading="lazy">
                 </figure>
 
-                <h3 class="project-title">Brawlhalla</h3>
+                <h3 class="project-title">Autonomous Robotic 3D Scanning for Smart Factory Planning</h3>
 
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-5.png" alt="dsm." loading="lazy">
-                </figure>
-
-                <h3 class="project-title">DSM.</h3>
-
-                <p class="project-category">Web design</p>
+                <p class="project-category">Robotics</p>
+                <p class="project-category">Digital Twin</p>
 
               </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web design">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-6.png" alt="metaspark" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">MetaSpark</h3>
-
-                <p class="project-category">Web design</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-7.png" alt="summary" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Summary</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="applications">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Task Manager</h3>
-
-                <p class="project-category">Applications</p>
-
-              </a>
-            </li>
-
-            <li class="project-item  active" data-filter-item data-category="web development">
-              <a href="#">
-
-                <figure class="project-img">
-                  <div class="project-item-icon-box">
-                    <ion-icon name="eye-outline"></ion-icon>
-                  </div>
-
-                  <img src="./assets/images/project-9.png" alt="arrival" loading="lazy">
-                </figure>
-
-                <h3 class="project-title">Arrival</h3>
-
-                <p class="project-category">Web development</p>
-
-              </a>
-            </li>
+            </li> -->
 
           </ul>
 
