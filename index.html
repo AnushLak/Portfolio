@@ -23,9 +23,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!--
+    - particles.js for 3D floating particles
+  -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 </head>
 
 <body>
+
+  <!--
+    - #PARTICLES BACKGROUND
+  -->
+  <div id="particles-js"></div>
 
   <!--
     - #MAIN
@@ -243,7 +253,7 @@
 
           <ul class="service-list">
 
-            <li class="service-item">
+            <li class="service-item" data-service-link="robotics">
 
               <div class="service-icon-box">
                 <img src="./assets/images/robotics.png" alt="design icon" width="100">
@@ -259,7 +269,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-service-link="computer vision">
 
               <div class="service-icon-box">
                 <img src="./assets/images/com_vision.png" alt="Web development icon" width="100">
@@ -275,7 +285,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-service-link="digital twin">
 
               <div class="service-icon-box">
                 <img src="./assets/images/digitaltwin.png" alt="mobile app icon" width="100">
@@ -292,7 +302,7 @@
 
             </li>
 
-            <li class="service-item">
+            <li class="service-item" data-service-link="ai/ml">
 
               <div class="service-icon-box">
                 <img src="./assets/images/aiml.png" alt="camera icon" width="100">
@@ -1458,6 +1468,96 @@
   -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <!--
+    - particles.js configuration
+  -->
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800
+          }
+        },
+        color: {
+          value: ['#3b82f6', '#8b5cf6', '#06b6d4', '#10b981']
+        },
+        shape: {
+          type: 'circle'
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false
+          }
+        },
+        size: {
+          value: 4,
+          random: true,
+          anim: {
+            enable: true,
+            speed: 2,
+            size_min: 0.5,
+            sync: false
+          }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#94a3b8',
+          opacity: 0.3,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1.5,
+          direction: 'none',
+          random: true,
+          straight: false,
+          out_mode: 'out',
+          bounce: false,
+          attract: {
+            enable: true,
+            rotateX: 600,
+            rotateY: 1200
+          }
+        }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: {
+          onhover: {
+            enable: true,
+            mode: 'grab'
+          },
+          onclick: {
+            enable: true,
+            mode: 'push'
+          },
+          resize: true
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            line_linked: {
+              opacity: 0.6
+            }
+          },
+          push: {
+            particles_nb: 4
+          }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
 
 </body>
 

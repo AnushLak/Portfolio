@@ -142,20 +142,94 @@ for (let i = 0; i < formInputs.length; i++) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
-// add event to all nav link
+// add event to all nav link with smooth transition
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
+    const clickedNav = this;
+    const targetPage = clickedNav.innerHTML.toLowerCase();
 
-    for (let i = 0; i < pages.length; i++) {
-      if (this.innerHTML.toLowerCase() === pages[i].dataset.page) {
-        pages[i].classList.add("active");
-        navigationLinks[i].classList.add("active");
-        window.scrollTo(0, 0);
-      } else {
-        pages[i].classList.remove("active");
-        navigationLinks[i].classList.remove("active");
+    // Find current active page and target page
+    let currentPage = null;
+    let newPage = null;
+
+    for (let j = 0; j < pages.length; j++) {
+      if (pages[j].classList.contains("active")) {
+        currentPage = pages[j];
+      }
+      if (targetPage === pages[j].dataset.page) {
+        newPage = pages[j];
       }
     }
 
+    // If clicking on same tab, do nothing
+    if (currentPage === newPage) return;
+
+    // Update nav links immediately - simple approach
+    navigationLinks.forEach(link => {
+      if (link === clickedNav) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+
+    // Smooth transition
+    if (currentPage) {
+      currentPage.classList.add("fade-out");
+
+      setTimeout(() => {
+        currentPage.classList.remove("active", "fade-out");
+        if (newPage) {
+          newPage.classList.add("active");
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }, 300);
+    } else if (newPage) {
+      newPage.classList.add("active");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   });
 }
+
+
+
+// Service items click to navigate to portfolio with filter
+const serviceItems = document.querySelectorAll("[data-service-link]");
+
+serviceItems.forEach(serviceItem => {
+  serviceItem.addEventListener("click", function() {
+    const category = this.dataset.serviceLink;
+
+    // Find the Portfolio nav link and click it
+    const portfolioNavLink = document.querySelector('[data-nav-link]:nth-child(1)');
+    let targetNavLink = null;
+
+    navigationLinks.forEach(link => {
+      if (link.innerHTML.toLowerCase() === 'portfolio') {
+        targetNavLink = link;
+      }
+    });
+
+    if (targetNavLink) {
+      // Trigger the nav link click
+      targetNavLink.click();
+
+      // After the page transition, apply the filter
+      setTimeout(() => {
+        // Update filter buttons
+        filterBtn.forEach(btn => {
+          const btnText = btn.innerText.toLowerCase();
+          if (btnText === category) {
+            btn.classList.add("active");
+            lastClickedBtn.classList.remove("active");
+            lastClickedBtn = btn;
+            selectValue.innerText = btn.innerText;
+          }
+        });
+
+        // Apply filter to projects
+        filterFunc(category);
+      }, 400);
+    }
+  });
+});
