@@ -9,6 +9,26 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 
 
+// Dot slider navigation for testimonials
+const testimonialsDots = document.querySelectorAll('[data-testimonials-dots] .dot');
+const testimonialsSlides = document.querySelectorAll('[data-testimonials-list] .testimonials-item');
+
+testimonialsDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    // Remove active from all
+    testimonialsDots.forEach(d => d.classList.remove('active'));
+    testimonialsSlides.forEach(s => s.classList.remove('active'));
+
+    // Add active to clicked
+    dot.classList.add('active');
+    if (testimonialsSlides[index]) {
+      testimonialsSlides[index].classList.add('active');
+    }
+  });
+});
+
+
+
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
