@@ -156,6 +156,59 @@ for (let i = 0; i < formInputs.length; i++) {
   });
 }
 
+// Formspree form submission handler
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Disable button and show loading state
+    formBtn.disabled = true;
+    formBtn.querySelector('span').textContent = 'Sending...';
+
+    // Get form data
+    const formData = new FormData(this);
+
+    // Send to Formspree
+    fetch(this.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Success
+        formStatus.style.display = 'block';
+        formStatus.style.color = '#10b981';
+        formStatus.textContent = 'Message sent successfully! I\'ll get back to you soon.';
+        contactForm.reset();
+        formBtn.querySelector('span').textContent = 'Send Message';
+        formBtn.disabled = true;
+
+        // Hide status after 5 seconds
+        setTimeout(() => {
+          formStatus.style.display = 'none';
+        }, 5000);
+      } else {
+        throw new Error('Form submission failed');
+      }
+    })
+    .catch(error => {
+      // Error
+      formStatus.style.display = 'block';
+      formStatus.style.color = '#ef4444';
+      formStatus.textContent = 'Failed to send message. Please try again or email directly.';
+      formBtn.querySelector('span').textContent = 'Send Message';
+      formBtn.disabled = false;
+      console.error('Formspree error:', error);
+    });
+  });
+}
+
 
 
 // page navigation variables
@@ -253,3 +306,98 @@ serviceItems.forEach(serviceItem => {
     }
   });
 });
+
+
+
+// Expandable project cards functionality
+const projectCards = document.querySelectorAll('[data-project-card]');
+
+projectCards.forEach(card => {
+  const header = card.querySelector('[data-project-toggle]');
+  const video = card.querySelector('video');
+  const pdfLinks = card.querySelectorAll('.pdf-preview');
+
+  if (header) {
+    header.addEventListener('click', () => {
+      // Toggle expanded state
+      card.classList.toggle('expanded');
+
+      // Pause video when collapsing
+      if (!card.classList.contains('expanded') && video) {
+        video.pause();
+      }
+    });
+  }
+
+  // Prevent video controls from triggering card collapse
+  if (video) {
+    video.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  }
+
+  // Prevent PDF links from triggering card collapse
+  pdfLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
+});
+
+
+
+// PDF.js - Render first page of PDFs as previews
+if (typeof pdfjsLib !== 'undefined') {
+  // Set the worker source
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  // Find all PDF preview elements
+  const pdfPreviews = document.querySelectorAll('.pdf-preview[data-pdf-src]');
+
+  pdfPreviews.forEach(preview => {
+    const pdfSrc = preview.getAttribute('data-pdf-src');
+    const canvas = preview.querySelector('.pdf-canvas');
+
+    if (!pdfSrc || !canvas) return;
+
+    // Add loading class
+    preview.classList.add('loading');
+
+    // Load and render the PDF
+    pdfjsLib.getDocument(pdfSrc).promise.then(pdf => {
+      // Get the first page
+      return pdf.getPage(1);
+    }).then(page => {
+      // Set up canvas scaling
+      const scale = 1.5;
+      const viewport = page.getViewport({ scale });
+
+      // Set canvas dimensions
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+
+      // Render the page
+      const context = canvas.getContext('2d');
+      const renderContext = {
+        canvasContext: context,
+        viewport: viewport
+      };
+
+      return page.render(renderContext).promise;
+    }).then(() => {
+      // Remove loading class when done
+      preview.classList.remove('loading');
+    }).catch(error => {
+      console.error('Error loading PDF:', pdfSrc, error);
+      preview.classList.remove('loading');
+      // Show fallback icon on error
+      canvas.style.display = 'none';
+      preview.innerHTML = `
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 180px; background: linear-gradient(135deg, hsla(217, 91%, 60%, 0.1), hsla(262, 83%, 58%, 0.1)); padding: 20px;">
+          <ion-icon name="document-text-outline" style="font-size: 40px; color: var(--orange-yellow-crayola);"></ion-icon>
+          <span style="margin-top: 10px; color: var(--light-gray); font-size: 12px;">Click to view PDF</span>
+        </div>
+      `;
+    });
+  });
+}
