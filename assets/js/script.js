@@ -225,7 +225,7 @@ serviceItems.forEach(serviceItem => {
     let targetNavLink = null;
 
     navigationLinks.forEach(link => {
-      if (link.innerHTML.toLowerCase() === 'portfolio') {
+      if (link.innerHTML.toLowerCase() === 'projects') {
         targetNavLink = link;
       }
     });

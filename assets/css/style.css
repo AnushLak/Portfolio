@@ -1238,7 +1238,7 @@ main {
 
 
 /*-----------------------------------*\
-  #PORTFOLIO
+  #PROJECTS (formerly PORTFOLIO)
 \*-----------------------------------*/
 
 .filter-list { display: none; }
@@ -1410,6 +1410,176 @@ main {
   color: var(--light-gray-70);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
+}
+
+
+
+
+
+/*-----------------------------------*\
+  #PUBLICATIONS
+\*-----------------------------------*/
+
+.publications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.publication-item {
+  display: flex;
+  gap: 20px;
+  background: hsla(0, 0%, 100%, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid hsla(0, 0%, 0%, 0.05);
+  box-shadow: var(--shadow-1);
+  transition: all 0.3s ease;
+}
+
+.publication-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-2);
+  border-color: hsla(217, 91%, 60%, 0.3);
+}
+
+.publication-venue-logo {
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: hsl(0, 0%, 100%);
+  border: 2px solid hsla(217, 91%, 60%, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.publication-venue-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.publication-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.publication-title {
+  font-size: var(--fs-5);
+  font-weight: var(--fw-500);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.publication-title a {
+  color: var(--white-2);
+  transition: color 0.3s ease;
+}
+
+.publication-title a:hover {
+  color: var(--orange-yellow-crayola);
+}
+
+.publication-authors {
+  font-size: var(--fs-6);
+  color: var(--light-gray);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.publication-authors strong {
+  color: var(--white-2);
+}
+
+.publication-venue {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.venue-name {
+  font-size: var(--fs-6);
+  font-weight: var(--fw-500);
+  color: var(--orange-yellow-crayola);
+}
+
+.venue-details {
+  font-size: var(--fs-7);
+  color: var(--light-gray-70);
+}
+
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.pub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, hsla(217, 91%, 60%, 0.1), hsla(262, 83%, 58%, 0.1));
+  border: 1px solid hsla(217, 91%, 60%, 0.3);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: var(--fw-500);
+  color: var(--orange-yellow-crayola);
+  transition: all 0.3s ease;
+}
+
+.pub-link:hover {
+  background: linear-gradient(135deg, hsl(217, 91%, 60%), hsl(262, 83%, 58%));
+  color: white;
+  border-color: transparent;
+  transform: translateY(-2px);
+}
+
+.pub-link ion-icon {
+  font-size: 16px;
+}
+
+.pub-link.pending {
+  background: hsla(0, 0%, 0%, 0.05);
+  border-color: hsla(0, 0%, 0%, 0.1);
+  color: var(--light-gray);
+  cursor: default;
+}
+
+.pub-link.pending:hover {
+  background: hsla(0, 0%, 0%, 0.05);
+  color: var(--light-gray);
+  border-color: hsla(0, 0%, 0%, 0.1);
+  transform: none;
+}
+
+/* Responsive for publications */
+@media (max-width: 580px) {
+  .publication-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .publication-venue-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .publication-venue {
+    justify-content: center;
+  }
+
+  .publication-links {
+    justify-content: center;
+  }
 }
 
 
