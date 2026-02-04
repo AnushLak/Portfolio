@@ -106,10 +106,18 @@ const filterFunc = function (selectedValue) {
 
     if (selectedValue === "all") {
       filterItems[i].classList.add("active");
-    } else if (selectedValue === filterItems[i].dataset.category) {
-      filterItems[i].classList.add("active");
     } else {
-      filterItems[i].classList.remove("active");
+      const rawCategories = filterItems[i].dataset.category || "";
+      const categories = rawCategories
+        .split(",")
+        .map(category => category.trim().toLowerCase())
+        .filter(Boolean);
+
+      if (categories.includes(selectedValue)) {
+        filterItems[i].classList.add("active");
+      } else {
+        filterItems[i].classList.remove("active");
+      }
     }
 
   }
