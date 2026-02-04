@@ -1792,6 +1792,17 @@ main {
   border: 1px solid hsla(217, 91%, 60%, 0.2);
 }
 
+.rotating-greeting {
+  display: inline-block;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  white-space: nowrap;
+}
+
+.rotating-greeting.is-fading {
+  opacity: 0;
+  transform: translateY(6px);
+}
+
 /* Responsive for expandable cards */
 @media (max-width: 768px) {
   .project-card-content {

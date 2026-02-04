@@ -352,6 +352,52 @@ projectCards.forEach(card => {
   });
 });
 
+// Rotating greeting in About section
+const rotatingGreeting = document.querySelector('[data-rotating-greeting]');
+
+if (rotatingGreeting) {
+  const greetings = [
+    "Hello",
+    "नमस्ते",
+    "வணக்கம்"
+  ];
+
+  let greetingIndex = 0;
+  const rotationDelay = 2400;
+  const fadeDuration = 350;
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const measureSpan = rotatingGreeting.cloneNode(true);
+  measureSpan.style.position = "absolute";
+  measureSpan.style.visibility = "hidden";
+  measureSpan.style.pointerEvents = "none";
+  measureSpan.style.whiteSpace = "nowrap";
+  document.body.appendChild(measureSpan);
+
+  let maxWidth = 0;
+  greetings.forEach(text => {
+    measureSpan.textContent = text;
+    maxWidth = Math.max(maxWidth, measureSpan.getBoundingClientRect().width);
+  });
+
+  document.body.removeChild(measureSpan);
+  if (maxWidth > 0) {
+    rotatingGreeting.style.minWidth = `${Math.ceil(maxWidth)}px`;
+  }
+
+  if (!prefersReducedMotion) {
+    setInterval(() => {
+      rotatingGreeting.classList.add("is-fading");
+
+      window.setTimeout(() => {
+        greetingIndex = (greetingIndex + 1) % greetings.length;
+        rotatingGreeting.textContent = greetings[greetingIndex];
+        rotatingGreeting.classList.remove("is-fading");
+      }, fadeDuration);
+    }, rotationDelay);
+  }
+}
+
 
 
 // PDF.js - Render first page of PDFs as previews
