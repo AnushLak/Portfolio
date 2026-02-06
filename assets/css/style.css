@@ -1147,18 +1147,15 @@ main {
 
 /* Responsive */
 @media (max-width: 580px) {
-  .sidebar {
-    max-height: none;
-  }
-
-  .sidebar.active {
-    max-height: none;
-  }
-
   .sidebar-info {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+  }
+
+  .avatar-box img {
+    width: 64px;
+    height: 64px;
   }
 
   .info-content .name {
@@ -1169,12 +1166,8 @@ main {
   .info-content .title {
     width: 100%;
     text-align: left;
-  }
-
-  .info_more-btn {
-    position: static;
-    align-self: flex-start;
-    margin-top: 6px;
+    font-size: 11px;
+    padding: 3px 10px;
   }
 
   .contacts-list {
