@@ -1155,10 +1155,23 @@ main {
 
 /* Responsive */
 @media (max-width: 580px) {
+  .sidebar {
+    max-height: 220px;
+  }
+
+  .sidebar.active {
+    max-height: 520px;
+  }
+
   .sidebar-info {
     flex-direction: column;
     align-items: center;
     gap: 12px;
+  }
+
+  .info-content {
+    width: 100%;
+    text-align: center;
   }
 
   .info-content .name {
