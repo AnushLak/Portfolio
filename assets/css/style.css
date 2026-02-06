@@ -1142,19 +1142,38 @@ main {
 
 /* Responsive */
 @media (max-width: 580px) {
-  .avatar-box img {
-    width: 64px;
-    height: 64px;
+  .sidebar-info {
+    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
 
   .info-content .name {
-    font-size: 20px;
-    margin-bottom: 8px;
+    font-size: var(--fs-4);
+    line-height: 1.2;
+    text-align: center;
   }
 
   .info-content .title {
-    font-size: 10px;
+    width: 100%;
+    text-align: left;
+    text-align: center;
+    font-size: 11px;
     padding: 3px 10px;
+  }
+
+  .info_more-btn {
+    display: none;
+  }
+
+  .sidebar-info_more {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .contacts-list {
+    gap: 12px;
   }
 
   .education-header {
