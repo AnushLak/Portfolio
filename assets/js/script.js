@@ -9,23 +9,118 @@ const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 
 
-// Dot slider navigation for testimonials
+// Dot slider navigation + auto/drag for testimonials
 const testimonialsDots = document.querySelectorAll('[data-testimonials-dots] .dot');
 const testimonialsSlides = document.querySelectorAll('[data-testimonials-list] .testimonials-item');
+const testimonialsSlider = document.querySelector('[data-testimonials-slider]');
+
+let testimonialIndex = 0;
+let testimonialsAutoTimer = null;
+let isDraggingTestimonials = false;
+let dragMovedTestimonials = false;
+let dragStartX = 0;
+let dragStartY = 0;
+let dragStartTime = 0;
+
+const setTestimonialIndex = (index) => {
+  testimonialIndex = (index + testimonialsSlides.length) % testimonialsSlides.length;
+
+  testimonialsDots.forEach(d => d.classList.remove('active'));
+  testimonialsSlides.forEach(s => s.classList.remove('active'));
+
+  if (testimonialsDots[testimonialIndex]) {
+    testimonialsDots[testimonialIndex].classList.add('active');
+  }
+  if (testimonialsSlides[testimonialIndex]) {
+    testimonialsSlides[testimonialIndex].classList.add('active');
+  }
+};
+
+const nextTestimonial = () => setTestimonialIndex(testimonialIndex + 1);
+const prevTestimonial = () => setTestimonialIndex(testimonialIndex - 1);
+
+const startTestimonialsAuto = () => {
+  if (!testimonialsSlides.length) return;
+  clearInterval(testimonialsAutoTimer);
+  testimonialsAutoTimer = setInterval(nextTestimonial, 3000);
+};
+
+const stopTestimonialsAuto = () => {
+  clearInterval(testimonialsAutoTimer);
+};
 
 testimonialsDots.forEach((dot, index) => {
   dot.addEventListener('click', () => {
-    // Remove active from all
-    testimonialsDots.forEach(d => d.classList.remove('active'));
-    testimonialsSlides.forEach(s => s.classList.remove('active'));
-
-    // Add active to clicked
-    dot.classList.add('active');
-    if (testimonialsSlides[index]) {
-      testimonialsSlides[index].classList.add('active');
-    }
+    setTestimonialIndex(index);
+    startTestimonialsAuto();
   });
 });
+
+if (testimonialsSlides.length) {
+  setTestimonialIndex(0);
+  startTestimonialsAuto();
+}
+
+if (testimonialsSlider) {
+  const onPointerDown = (e) => {
+    isDraggingTestimonials = true;
+    dragMovedTestimonials = false;
+    dragStartX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    dragStartY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    dragStartTime = Date.now();
+    stopTestimonialsAuto();
+  };
+
+  const onPointerMove = (e) => {
+    if (!isDraggingTestimonials) return;
+    const currentX = e.clientX ?? (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+    const currentY = e.clientY ?? (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    const deltaX = currentX - dragStartX;
+    const deltaY = currentY - dragStartY;
+
+    if (Math.abs(deltaX) > 6 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      dragMovedTestimonials = true;
+      e.preventDefault();
+    }
+  };
+
+  const onPointerUp = (e) => {
+    if (!isDraggingTestimonials) return;
+    isDraggingTestimonials = false;
+
+    const endX = e.clientX ?? (e.changedTouches && e.changedTouches[0] ? e.changedTouches[0].clientX : 0);
+    const deltaX = endX - dragStartX;
+    const elapsed = Date.now() - dragStartTime;
+    const swipeThreshold = 50;
+
+    if (Math.abs(deltaX) > swipeThreshold && elapsed < 1200) {
+      if (deltaX < 0) {
+        nextTestimonial();
+      } else {
+        prevTestimonial();
+      }
+    }
+
+    startTestimonialsAuto();
+  };
+
+  testimonialsSlider.addEventListener('mousedown', onPointerDown);
+  testimonialsSlider.addEventListener('mousemove', onPointerMove);
+  testimonialsSlider.addEventListener('mouseup', onPointerUp);
+  testimonialsSlider.addEventListener('mouseleave', () => {
+    if (isDraggingTestimonials) {
+      isDraggingTestimonials = false;
+      startTestimonialsAuto();
+    }
+  });
+
+  testimonialsSlider.addEventListener('touchstart', onPointerDown, { passive: true });
+  testimonialsSlider.addEventListener('touchmove', onPointerMove, { passive: false });
+  testimonialsSlider.addEventListener('touchend', onPointerUp);
+
+  testimonialsSlider.addEventListener('mouseenter', stopTestimonialsAuto);
+  testimonialsSlider.addEventListener('mouseleave', startTestimonialsAuto);
+}
 
 
 
@@ -58,7 +153,11 @@ const testimonialsModalFunc = function () {
 // add click event to all modal items
 for (let i = 0; i < testimonialsItem.length; i++) {
 
-  testimonialsItem[i].addEventListener("click", function () {
+  testimonialsItem[i].addEventListener("click", function (e) {
+    if (dragMovedTestimonials) {
+      dragMovedTestimonials = false;
+      return;
+    }
 
     modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
     modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
@@ -363,7 +462,7 @@ if (rotatingGreeting) {
   ];
 
   let greetingIndex = 0;
-  const rotationDelay = 2400;
+  const rotationDelay = 3000;
   const fadeDuration = 350;
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

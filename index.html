@@ -152,14 +152,14 @@
           </li> -->
 
           <li class="social-item">
-            <a href="https://www.linkedin.com/in/anush-lakshman-sivaraman/" class="social-link">
+            <a href="www.linkedin.com/in/anushlak" class="social-link">
               <ion-icon name="logo-linkedin"></ion-icon>
             </a>
           </li>
 
           <li class="social-item">
-            <a href="https://www.instagram.com/anushhh_0908?igsh=ZmY1N2llZnBmYXlx" class="social-link">
-              <ion-icon name="logo-instagram"></ion-icon>
+            <a href="https://scholar.google.com/citations?hl=en&user=ykMlia8AAAAJ&view_op=list_works&authuser=1&gmla=APjjwuZmYjoW0_I7ZjyZv54N1G_m_HAb1rYYCVNhGfFCh5UxJNue0E1--blakA3hNh5jFrM8WvKisPvcZpBhO-WIDQ4aUJG7w-clNVrdcvbgE0PnwUQMHDOfOgtpNyW0IKJUeNMfFxi-OOKwgKvMThbtt8jApP_w7PaKvdgLA9cZu4k&sciund=669661539097152843" class="social-link">
+              <ion-icon name="school-outline"></ion-icon>
             </a>
           </li>
 
@@ -335,7 +335,7 @@
 
           <h3 class="h3 testimonials-title">Testimonials</h3>
 
-          <div class="testimonials-slider">
+          <div class="testimonials-slider" data-testimonials-slider>
             <ul class="testimonials-list" data-testimonials-list>
 
               <li class="testimonials-item active">
@@ -864,72 +864,6 @@
 
           <div class="project-cards-list">
 
-            <!-- INTERNAL WALL FINISHING ROBOT -->
-            <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
-              <div class="project-card-header" data-project-toggle>
-                <div class="project-card-thumbnail">
-                  <img src="./assets/images/ifr.png" alt="Internal Wall Finishing Robot">
-                </div>
-                <div class="project-card-info">
-                  <h3 class="project-card-title">Autonomous Internal Wall Finishing Robot for Block Masonry</h3>
-                  <span class="project-card-category">Robotics</span>
-                </div>
-                <div class="project-card-toggle-icon">
-                  <ion-icon name="chevron-down-outline"></ion-icon>
-                </div>
-              </div>
-              <div class="project-card-content">
-                <div class="project-card-media">
-                  <video controls poster="./assets/images/ifr.png">
-                    <source src="./assets/videos/IFR Demo.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="project-card-description">
-                  <h4>Project Overview</h4>
-                  <p>Developed an autonomous robotic system for internal wall finishing in block masonry construction. The robot automates the plastering and finishing process, significantly reducing manual labor and improving consistency in construction quality.</p>
-                  <div class="project-tags">
-                    <span class="project-tag">ROS</span>
-                    <span class="project-tag">Computer Vision</span>
-                    <span class="project-tag">Motion Planning</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- REFORMER TUBE CRAWLER -->
-            <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
-              <div class="project-card-header" data-project-toggle>
-                <div class="project-card-thumbnail">
-                  <img src="./assets/images/rtcrawler.png" alt="Reformer Tube Crawler">
-                </div>
-                <div class="project-card-info">
-                  <h3 class="project-card-title">InD-RoPRIT for Structural Health Monitoring of Reformer Tubes</h3>
-                  <span class="project-card-category">Robotics</span>
-                </div>
-                <div class="project-card-toggle-icon">
-                  <ion-icon name="chevron-down-outline"></ion-icon>
-                </div>
-              </div>
-              <div class="project-card-content">
-                <div class="project-card-media">
-                  <video controls poster="./assets/images/rtcrawler.png">
-                    <source src="./assets/videos/indroprit_v2.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
-                <div class="project-card-description">
-                  <h4>Project Overview</h4>
-                  <p>Led design and development of InD-RoPRIT (Industrial Robotic Pipe Reformer Inspection Tool) for structural health monitoring of reformer tubes using multi-modal sensor data fusion. Spearheaded Signal-Level Multi-Sensor Data Fusion methodology and commercialized the robotic crawler.</p>
-                  <div class="project-tags">
-                    <span class="project-tag">NDT</span>
-                    <span class="project-tag">Sensor Fusion</span>
-                    <span class="project-tag">Embedded Systems</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
             <!-- EKF SLAM -->
             <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
               <div class="project-card-header" data-project-toggle>
@@ -953,7 +887,7 @@
                 </div>
                 <div class="project-card-description">
                   <h4>Project Overview</h4>
-                  <p>Implemented Extended Kalman Filter based Simultaneous Localization and Mapping (SLAM) algorithm for autonomous robot navigation. The system enables real-time path planning and obstacle avoidance in unknown environments.</p>
+                  <p>Implemented an Extended Kalman Filter (EKF)-based SLAM system for autonomous navigation in ROS/Gazebo. The robot’s pose and environmental map were modeled as a multivariate Gaussian, with the state covariance continuously updated to track uncertainty. Using simulated 2D-LiDAR bearing observations to known landmarks, the system performed prediction updates based on motion inputs and measurement updates to correct drift and reduce uncertainty. The framework enabled real-time localization, landmark mapping, point-to-point navigation, and obstacle avoidance in previously unknown environments, with uncertainty visualized through covariance ellipses for both robot pose and landmark estimates.</p>
                   <div class="project-tags">
                     <span class="project-tag">SLAM</span>
                     <span class="project-tag">Kalman Filter</span>
@@ -961,6 +895,73 @@
                   </div>
                 </div>
               </div>
+
+            <!-- INTERNAL WALL FINISHING ROBOT -->
+            <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
+              <div class="project-card-header" data-project-toggle>
+                <div class="project-card-thumbnail">
+                  <img src="./assets/images/ifr.png" alt="Internal Wall Finishing Robot">
+                </div>
+                <div class="project-card-info">
+                  <h3 class="project-card-title">An Autonomous Mobile Robot for End-to-End Room Construction</h3>
+                  <span class="project-card-category">Robotics</span>
+                </div>
+                <div class="project-card-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <div class="project-card-content">
+                <div class="project-card-media">
+                  <video controls poster="./assets/images/ifr.png">
+                    <source src="./assets/videos/IFR Demo.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="project-card-description">
+                  <h4>Project Overview</h4>
+                  <p>I helped develop a robotic construction-automation pipeline end to end. In ROS/Gazebo, I implemented an EKF-SLAM approach to localize the mobile robot and navigate reliably to the block pallet. After arrival, the robot used QR-code markers on the pallet (aligned to block edges) to compute optimal grasp points for picking. Using simulated distance sensors and an Intel RealSense stereo camera, our team then developed a placement algorithm that positioned blocks at the target locations with centimeter-level precision, meeting and exceeding key industrial requirements. We extensively validated the full sim-to-real pipeline, and the video shows a snapshot from real-world testing. Overall, the system reduced construction time by 70% and cut labor needs from 10 people to 3.</p>
+                  <div class="project-tags">
+                    <span class="project-tag">ROS</span>
+                    <span class="project-tag">Computer Vision</span>
+                    <span class="project-tag">Motion Planning</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- REFORMER TUBE CRAWLER -->
+            <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
+              <div class="project-card-header" data-project-toggle>
+                <div class="project-card-thumbnail">
+                  <img src="./assets/images/rtcrawler.png" alt="Reformer Tube Crawler">
+                </div>
+                <div class="project-card-info">
+                  <h3 class="project-card-title">Intelligent Climbing Robot for AI-based Inspection of Reformer Tubes</h3>
+                  <span class="project-card-category">Robotics</span>
+                </div>
+                <div class="project-card-toggle-icon">
+                  <ion-icon name="chevron-down-outline"></ion-icon>
+                </div>
+              </div>
+              <div class="project-card-content">
+                <div class="project-card-media">
+                  <video controls poster="./assets/images/rtcrawler.png">
+                    <source src="./assets/videos/indroprit_v2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="project-card-description">
+                  <h4>Project Overview</h4>
+                  <p>Led development of a climbing NDE robot to detect and localize creep damage (bulging, bowing, and microstructural cracks) on 10–15 m tall hydrogen reformer tubes, enabling sectional repair instead of full replacement. I conducted a literature + market survey to drive sensor selection and finalized a complementary suite: lasers (bulge measurement), an IMU (bow measurement), and ultrasonic testing (microcrack detection). I then designed and manufactured a modular robot that tightly couples to the tube for reliable readings, adding suspension and a single-point adjustment mechanism to expand the usable tube-diameter range. On the software side, I built the control and data acquisition system in LabVIEW, including signal-level sensor fusion for time-synchronized measurements and precise localization. Finally, I developed a MATLAB vector-geometry reconstruction algorithm to generate accurate 2D/3D tube models from the laser, IMU, and UT data. These contributions collectively supported an estimated $4M reduction in replacement costs.</p>
+                  <div class="project-tags">
+                    <span class="project-tag">NDT</span>
+                    <span class="project-tag">Sensor Fusion</span>
+                    <span class="project-tag">Embedded Systems</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             </div>
 
             <!-- ROBOTIC 3D SCANNING -->
@@ -979,10 +980,10 @@
               </div>
               <div class="project-card-content">
                 <div class="project-card-media project-media-gallery">
-                  <div class="media-gallery-item">
+                  <!-- <div class="media-gallery-item">
                     <img src="./assets/images/robodt.png" alt="Robotic 3D Scanning Digital Twin">
                     <span class="media-label">Project Overview</span>
-                  </div>
+                  </div> -->
                   <div class="media-gallery-item">
                     <a href="./assets/videos/Autonomous_Robotic_3D_Scanning_for_Smart_Factory_Planning_SPIEDCS24.pdf" target="_blank" class="pdf-preview" data-pdf-src="./assets/videos/Autonomous_Robotic_3D_Scanning_for_Smart_Factory_Planning_SPIEDCS24.pdf">
                       <canvas class="pdf-canvas"></canvas>
@@ -1006,7 +1007,7 @@
                 </div>
                 <div class="project-card-description">
                   <h4>Project Overview</h4>
-                  <p>Developed a comprehensive digital twin framework in NVIDIA Isaac Sim for autonomous robotic 3D scanning path planning. The system enables simulation-to-reality transfer for industrial inspection applications.</p>
+                  <p>A safe simulation-based pipeline is essential to accelerate autonomous path-planning for industrial robotic 3D scanning. My team and I built a high-fidelity digital twin in NVIDIA Isaac Sim, enabling rapid iteration without risk to hardware or personnel. We implemented a keyboard-based teleoperation framework and a teach-pendant-style waypoint navigation workflow in the NVIDIA warehouse scene (with an added obstacle cube) to collect repeatable scan trajectories. Using a simulated stereo camera, we captured dense 3D data and applied Iterative Closest Point (ICP) registration to stitch multiple views into a full reconstructed 3D model of the environment. This simulation framework provided a validated end-to-end testbed for development and debugging of path-planning algorithms faster and more safely before deployment on the real system</p>
 
                   <div class="project-publications">
                     <h4>Publications & Awards</h4>
@@ -1051,10 +1052,10 @@
               </div>
               <div class="project-card-content">
                 <div class="project-card-media project-media-gallery">
-                  <div class="media-gallery-item">
+                  <!-- <div class="media-gallery-item">
                     <img src="./assets/images/virtuscover.png" alt="VIRTUS FPP System">
                     <span class="media-label">Project Overview</span>
-                  </div>
+                  </div> -->
                   <div class="media-gallery-item">
                     <a href="./assets/videos/VIRTUS-FPP.pdf" target="_blank" class="pdf-preview" data-pdf-src="./assets/videos/VIRTUS-FPP.pdf">
                       <canvas class="pdf-canvas"></canvas>
@@ -1078,7 +1079,7 @@
                 </div>
                 <div class="project-card-description">
                   <h4>Project Overview</h4>
-                  <p>Created VIRTUS-FPP, a virtual sensor modeling framework for Fringe Projection Profilometry in NVIDIA Isaac Sim. Enables photorealistic synthetic data generation for training and validating 3D measurement algorithms.</p>
+                  <p>Fringe Projection Profilometry (FPP) is a structured-light triangulation method that uses a camera–projector pair: the projector casts fringe patterns, and the camera measures their phase shift to reconstruct high-accuracy 3D geometry. However, real-world FPP setups are often costly making experimentation slow, expensive, and hard to reproduce. To address this, I co-developed VIRTUS-FPP, a physics-based virtual sensor framework in NVIDIA Isaac Sim that models the full FPP pipeline end-to-end. I made a key theoretical contribution by deriving the projector as an inverse-camera model in closed form, enabling accurate projector modeling and more faithful simulation. We validated the simulator’s reconstruction performance across multiple sensor configurations and objects, then used the generated data to build a machine-learning dataset and run extensive benchmarking for single-shot FPP using models such as UNet, HFormer, pix2pixHD, and ResUNet. Together, these contributions enable faster iteration and controlled experimentation across lighting and material variations, accelerating both FPP system design and learning-based reconstruction research. Our work was also featured in Quantum Zeitgeist magazine.</p>
 
                   <div class="project-publications">
                     <h4>Publications</h4>
