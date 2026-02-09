@@ -456,9 +456,13 @@ const rotatingGreeting = document.querySelector('[data-rotating-greeting]');
 
 if (rotatingGreeting) {
   const greetings = [
+    
     "Hello",
+    "Hola",
+    "Bonjour",
     "नमस्ते",
-    "வணக்கம்"
+    "Vanakkam",
+    // "வணக்கம்"
   ];
 
   let greetingIndex = 0;
