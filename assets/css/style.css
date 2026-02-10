@@ -1156,11 +1156,11 @@ main {
 /* Responsive */
 @media (max-width: 580px) {
   .sidebar {
-    max-height: 220px;
+    max-height: none;
   }
 
   .sidebar.active {
-    max-height: 520px;
+    max-height: none;
   }
 
   .sidebar-info {
@@ -1183,6 +1183,15 @@ main {
   .info-content .title {
     width: 100%;
     text-align: center;
+  }
+
+  .info_more-btn {
+    display: none;
+  }
+
+  .sidebar-info_more {
+    opacity: 1;
+    visibility: visible;
   }
 
   .contacts-list {
