@@ -959,16 +959,24 @@ main {
 
 .timeline-item:not(:last-child) { margin-bottom: 20px; }
 
+.timeline-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
 .timeline-item-title {
   font-size: var(--fs-6);
   line-height: 1.3;
   margin-bottom: 7px;
 }
 
-.timeline-list span {
+.timeline-item-date {
   color: var(--vegas-gold);
   font-weight: var(--fw-400);
   line-height: 1.6;
+  white-space: nowrap;
 }
 
 .timeline-item:not(:last-child)::before {
@@ -998,6 +1006,17 @@ main {
   color: var(--light-gray);
   font-weight: var(--fw-300);
   line-height: 1.6;
+}
+
+@media (max-width: 580px) {
+  .timeline-item-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timeline-item-date {
+    margin-top: 4px;
+  }
 }
 
 
