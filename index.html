@@ -898,13 +898,13 @@
                   <ion-icon name="chevron-down-outline"></ion-icon>
                 </div>
               </div>
-              <div class="project-card-content">
-                <div class="project-card-media">
-                  <video controls poster="./assets/images/slam_1.png">
-                    <source src="./assets/videos/simulation_h.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div>
+                <div class="project-card-content">
+                  <div class="project-card-media">
+                    <video controls poster="./assets/images/slam_1.png">
+                      <source src="./assets/videos/ekfslam.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 <div class="project-card-description">
                   <h4>Project Overview</h4>
                   <p>Implemented an Extended Kalman Filter (EKF)-based SLAM system for autonomous navigation in ROS/Gazebo. The robot’s pose and environmental map were modeled as a multivariate Gaussian, with the state covariance continuously updated to track uncertainty. Using simulated 2D-LiDAR bearing observations to known landmarks, the system performed prediction updates based on motion inputs and measurement updates to correct drift and reduce uncertainty. The framework enabled real-time localization, landmark mapping, point-to-point navigation, and obstacle avoidance in previously unknown environments, with uncertainty visualized through covariance ellipses for both robot pose and landmark estimates.</p>
