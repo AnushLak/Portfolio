@@ -322,6 +322,19 @@ if (contactForm) {
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
 const pages = document.querySelectorAll("[data-page]");
 
+// Scroll past the globe-hero into the active article.
+// The fixed navbar lives at the top of the viewport on >=1024px screens
+// (~64px tall); offset compensates so the article title is not clipped.
+function scrollPastHero() {
+  // globe-hero may set this flag while it handles its own targeted scroll.
+  if (document.body.dataset.suppressNavScroll === '1') return;
+  const mainEl = document.querySelector('main');
+  if (!mainEl) return;
+  const navOffset = window.innerWidth >= 1024 ? 80 : 16;
+  const top = mainEl.getBoundingClientRect().top + window.pageYOffset - navOffset;
+  window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+}
+
 // add event to all nav link with smooth transition
 for (let i = 0; i < navigationLinks.length; i++) {
   navigationLinks[i].addEventListener("click", function () {
@@ -341,8 +354,12 @@ for (let i = 0; i < navigationLinks.length; i++) {
       }
     }
 
-    // If clicking on same tab, do nothing
-    if (currentPage === newPage) return;
+    // Same tab: still scroll past the hero so the user lands on the section
+    // instead of staying parked on the globe.
+    if (currentPage === newPage) {
+      scrollPastHero();
+      return;
+    }
 
     // Update nav links immediately - simple approach
     navigationLinks.forEach(link => {
@@ -361,12 +378,12 @@ for (let i = 0; i < navigationLinks.length; i++) {
         currentPage.classList.remove("active", "fade-out");
         if (newPage) {
           newPage.classList.add("active");
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          scrollPastHero();
         }
       }, 300);
     } else if (newPage) {
       newPage.classList.add("active");
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      scrollPastHero();
     }
   });
 }

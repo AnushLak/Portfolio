@@ -16,6 +16,7 @@
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/globe-hero.css">
 
   <!--
     - google font link
@@ -36,6 +37,124 @@
 </head>
 
 <body>
+
+  <!--
+    - #GLOBE HERO (interactive landing globe)
+    - Markup is intentionally self-contained; styles are in globe-hero.css and
+    - behavior is in globe-hero.js. Marker data lives in geoExperiences.js.
+  -->
+  <section class="globe-hero" data-globe-hero aria-labelledby="globe-hero-title">
+
+    <div class="globe-hero__inner">
+
+      <!-- Left: copy + CTAs -->
+      <div class="globe-hero__copy">
+        <span class="globe-hero__eyebrow">Anush Lakshman Sivaraman</span>
+        <h1 id="globe-hero-title" class="globe-hero__title">
+          Engineering intelligent robotic systems across research, simulation, and real-world deployment.
+        </h1>
+        <p class="globe-hero__subtitle">
+          An interactive map of my education, research, projects, publications, and professional journey
+          across robotics, computer vision, AI/ML, and digital twin systems.
+        </p>
+
+        <div class="globe-hero__cta-row">
+          <button type="button" class="globe-hero__btn globe-hero__btn--primary" data-globe-explore>
+            <ion-icon name="planet-outline" aria-hidden="true"></ion-icon>
+            <span>Explore My Journey</span>
+          </button>
+          <button type="button" class="globe-hero__btn globe-hero__btn--secondary" data-globe-projects>
+            <ion-icon name="layers-outline" aria-hidden="true"></ion-icon>
+            <span>View Projects</span>
+          </button>
+        </div>
+
+        <p class="globe-hero__hint">
+          <span class="globe-hero__hint-dot" aria-hidden="true"></span>
+          Drag to rotate &middot; scroll or pinch to zoom &middot; click a marker for details
+        </p>
+
+        <!-- Accessible non-3D fallback. Always rendered so the globe content
+             is reachable via keyboard and assistive tech. Visible only when
+             the globe stage is hidden (no WebGL); otherwise screen-readers
+             still find it via the DOM order. -->
+        <div class="globe-hero__fallback" role="region" aria-label="Journey timeline (list view)">
+          <p class="globe-hero__fallback-title">Journey timeline</p>
+          <div class="globe-hero__fallback-list" data-globe-fallback-list></div>
+        </div>
+      </div>
+
+      <!-- Right: globe stage -->
+      <div class="globe-hero__stage" data-globe-stage>
+        <div class="globe-hero__loading" aria-hidden="true">
+          <div class="globe-hero__spinner"></div>
+          <span>Loading globe…</span>
+        </div>
+        <div class="globe-hero__globe-mount" data-globe-mount role="img"
+             aria-label="Interactive 3D globe showing locations of education, research, internships, projects, publications, and affiliations."></div>
+
+        <!-- Citations layer toggle: ON adds citing institutions + arcs over
+             the journey markers; OFF returns to just the journey markers. -->
+        <button type="button" class="globe-hero__cite-toggle"
+                data-globe-cite-toggle aria-pressed="false"
+                aria-label="Toggle citation locations on the globe">
+          <ion-icon name="globe-outline" aria-hidden="true"></ion-icon>
+          <span>Citations</span>
+          <span class="globe-hero__mode-badge" data-citations-badge></span>
+        </button>
+
+        <!-- Zoom controls (work alongside scroll-wheel and pinch zoom) -->
+        <div class="globe-hero__zoom" data-globe-zoom>
+          <button type="button" class="globe-hero__zoom-btn" data-globe-zoom-in aria-label="Zoom in">
+            <ion-icon name="add-outline" aria-hidden="true"></ion-icon>
+          </button>
+          <button type="button" class="globe-hero__zoom-btn" data-globe-zoom-out aria-label="Zoom out">
+            <ion-icon name="remove-outline" aria-hidden="true"></ion-icon>
+          </button>
+          <button type="button" class="globe-hero__zoom-btn" data-globe-zoom-reset aria-label="Reset globe view">
+            <ion-icon name="contract-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+
+        <!-- Detail panel anchored to the stage on desktop. -->
+        <div class="globe-hero__panel" data-globe-panel aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="globe-panel-title">
+          <button class="globe-hero__panel-close" type="button" data-pp-close aria-label="Close detail">
+            <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+          </button>
+          <span class="globe-hero__panel-category" data-pp-category></span>
+          <h3 class="globe-hero__panel-title" id="globe-panel-title" data-pp-title></h3>
+          <p class="globe-hero__panel-org" data-pp-org></p>
+          <div class="globe-hero__panel-meta">
+            <span><ion-icon name="calendar-outline" aria-hidden="true"></ion-icon><span data-pp-date></span></span>
+            <span><ion-icon name="location-outline" aria-hidden="true"></ion-icon><span data-pp-loc></span></span>
+          </div>
+          <p class="globe-hero__panel-desc" data-pp-desc></p>
+          <div class="globe-hero__panel-tags" data-pp-tags></div>
+          <ul class="globe-hero__panel-cited-list" data-pp-cited-list hidden></ul>
+          <ol class="globe-hero__panel-cluster-list" data-pp-cluster-list hidden></ol>
+          <button type="button" class="globe-hero__panel-jump" data-pp-jump>
+            Jump to section
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hover tooltip (positioned to cursor by JS) -->
+    <div class="globe-hero__tooltip" data-globe-tooltip aria-hidden="true">
+      <p class="globe-hero__tooltip-title" data-tt-title></p>
+      <p class="globe-hero__tooltip-org" data-tt-org></p>
+      <p class="globe-hero__tooltip-loc" data-tt-loc></p>
+      <ol class="globe-hero__tooltip-list" data-tt-list hidden></ol>
+    </div>
+
+    <button type="button" class="globe-hero__scroll-cue" data-globe-scroll-cue aria-label="Scroll to about section">
+      <span>Scroll</span>
+      <span class="globe-hero__scroll-cue-arrow" aria-hidden="true"></span>
+    </button>
+
+  </section>
 
   <!--
     - #PARTICLES BACKGROUND
@@ -501,19 +620,19 @@
               </a>
             </li>
 
-            <li class="clients-item">
+            <li class="clients-item" id="aff-reactor">
               <a href="https://ctre.iastate.edu/reactor-lab/">
                 <img src="./assets/images/reactor.png" alt="REACTOR Lab">
               </a>
             </li>
 
-            <li class="clients-item">
+            <li class="clients-item" id="aff-vrac">
               <a href="https://www.vrac.iastate.edu">
                 <img src="./assets/images/vrac.png" alt="VRAC">
               </a>
             </li>
 
-            <li class="clients-item">
+            <li class="clients-item" id="aff-cmia">
               <a href="https://www.cmialab.com">
                 <img src="./assets/images/cmia.png" alt="CMIA Lab">
               </a>
@@ -546,7 +665,7 @@
         </header>
 
         <!-- Masters -->
-        <section class="education-card">
+        <section class="education-card" id="edu-isu">
           <div class="education-header">
             <div class="school-logo">
               <img src="./assets/images/schools/isu-logo.png" alt="Iowa State University">
@@ -587,7 +706,7 @@
         </section>
 
         <!-- Bachelors -->
-        <section class="education-card">
+        <section class="education-card" id="edu-ssn">
           <div class="education-header">
             <div class="school-logo">
               <img src="./assets/images/schools/ssn-logo.png" alt="SSN College of Engineering">
@@ -752,7 +871,7 @@
 
           <ol class="timeline-list">
 
-            <li class="timeline-item">
+            <li class="timeline-item" id="exp-isu-gra">
               <div class="timeline-item-header">
                 <div>
                   <h4 class="h4 timeline-item-title">Graduate Research Assistant</h4>
@@ -762,7 +881,7 @@
               </div>
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" id="exp-lumiere">
               <div class="timeline-item-header">
                 <div>
                   <h4 class="h4 timeline-item-title">Research Mentor</h4>
@@ -772,7 +891,7 @@
               </div>
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" id="exp-ta">
               <div class="timeline-item-header">
                 <div>
                   <h4 class="h4 timeline-item-title">Teaching Assistant</h4>
@@ -782,7 +901,7 @@
               </div>
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" id="exp-iitm">
               <div class="timeline-item-header">
                 <div>
                   <h4 class="h4 timeline-item-title">Project Associate</h4>
@@ -792,7 +911,7 @@
               </div>
             </li>
 
-            <li class="timeline-item">
+            <li class="timeline-item" id="exp-ari">
               <div class="timeline-item-header">
                 <div>
                   <h4 class="h4 timeline-item-title">Research and Development Intern</h4>
@@ -900,7 +1019,7 @@
               </div>
               <div class="project-card-content">
                 <div class="project-card-media">
-                  <video controls poster="./assets/images/slam_1.png">
+                  <video controls poster="./assets/images/slam_1.png"> 
                     <source src="./assets/videos/simulation_h.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                   </video>
@@ -950,7 +1069,7 @@
             </div>
 
             <!-- REFORMER TUBE CRAWLER -->
-            <div class="project-card active" data-filter-item data-category="robotics" data-project-card>
+            <div class="project-card active" data-filter-item data-category="robotics" data-project-card id="proj-rtcrawler">
               <div class="project-card-header" data-project-toggle>
                 <div class="project-card-thumbnail">
                   <img src="./assets/images/rtcrawler.png" alt="Reformer Tube Crawler">
@@ -1221,7 +1340,7 @@
           <!-- ========================= -->
           <h3 class="publication-subsection">Conference Proceedings</h3>
 
-          <div class="publication-item">
+          <div class="publication-item" id="pub-spie-pw-2026">
             <div class="publication-venue-logo">
               <img src="./assets/images/publications/spiepw-logo.svg" alt="SPIE">
             </div>
@@ -1253,7 +1372,7 @@
             </div>
           </div>
 
-          <div class="publication-item">
+          <div class="publication-item" id="pub-ieee-itsc-2025">
             <div class="publication-venue-logo">
               <img src="./assets/images/publications/itsc-logo.png" alt="IEEE">
             </div>
@@ -1278,7 +1397,7 @@
             </div>
           </div>
 
-          <div class="publication-item">
+          <div class="publication-item" id="pub-spie-dcs-2024">
             <div class="publication-venue-logo">
               <img src="./assets/images/publications/spiedl.svg" alt="SPIE">
             </div>
@@ -1497,6 +1616,15 @@
 
 
 
+
+  <!--
+    - globe hero data + behavior (loaded before script.js so the hero can
+    - deep-link into the existing nav handlers wired up there)
+    - citations.js is auto-generated by scripts/fetch-citations.js
+  -->
+  <script src="./assets/js/geoExperiences.js"></script>
+  <script src="./assets/data/citations.js"></script>
+  <script src="./assets/js/globe-hero.js" defer></script>
 
   <!--
     - custom js link
